@@ -12,17 +12,17 @@ import com.petclinic.service.VetService;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-	@Autowired
-	OwnerService ownerService;
+	private final OwnerService ownerService;
+	private final VetService vetService;
 	
-	@Autowired
-	VetService vetService;
-	
-	/*
-	 * DataInitializer(){ ownerService = new OwnerServiceMap(); vetService = new
-	 * VetServiceMap(); }
-	 */
-	
+	//@Autowired By default these get autowired
+	public DataInitializer(OwnerService ownerService, VetService vetService) {
+		this.ownerService = ownerService;
+		this.vetService = vetService;
+	}
+
+
+
 	@Override
 	public void run(String... args) throws Exception {
 
