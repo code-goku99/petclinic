@@ -1,7 +1,13 @@
 package com.petclinic.model;
 
-public class BaseEntity {
+import java.io.Serializable;
 
+public class BaseEntity implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 
 	public Long getId() {
