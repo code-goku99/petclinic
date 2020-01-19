@@ -1,6 +1,5 @@
 package com.petclinic.data.initializer;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -27,14 +26,12 @@ public class DataInitializer implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Owner owner = new Owner();
-		owner.setId(1L);
 		owner.setFirstName("Jones");
 		owner.setLastName("Thompson");
 		
 		ownerService.save(owner);
 		
 		Vet vet = new Vet();
-		vet.setId(1L);
 		vet.setFirstName("Arnold");
 		vet.setLastName("Huges");
 		 
