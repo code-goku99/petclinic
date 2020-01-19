@@ -1,10 +1,9 @@
 package com.petclinic.data.initializer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.petclinic.map.OwnerServiceMap;
-import com.petclinic.map.VetServiceMap;
 import com.petclinic.model.Owner;
 import com.petclinic.model.Vet;
 import com.petclinic.service.OwnerService;
@@ -13,13 +12,16 @@ import com.petclinic.service.VetService;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
+	@Autowired
 	OwnerService ownerService;
+	
+	@Autowired
 	VetService vetService;
 	
-	DataInitializer(){
-		ownerService = new OwnerServiceMap();
-		vetService = new VetServiceMap();
-	}
+	/*
+	 * DataInitializer(){ ownerService = new OwnerServiceMap(); vetService = new
+	 * VetServiceMap(); }
+	 */
 	
 	@Override
 	public void run(String... args) throws Exception {
