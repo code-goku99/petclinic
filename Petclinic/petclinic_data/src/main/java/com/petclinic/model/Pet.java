@@ -2,21 +2,11 @@ package com.petclinic.model;
 
 import java.time.LocalDate;
 
-public class Pet {
+public class Pet extends BaseEntity {
 
-	private Long Id;
 	private PetType petType;
 	private Owner owner;
 	private LocalDate bithday;
-
-	
-	public Long getId() {
-		return Id;
-	}
-
-	public void setId(Long id) {
-		Id = id;
-	}
 
 	public PetType getPetType() {
 		return petType;
