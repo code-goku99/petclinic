@@ -2,14 +2,17 @@ package com.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource("classpath:xml-config.xml")
+@ComponentScan(basePackages = {"com.properties.*","com.petclinic.*"})
 public class PetclinicApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PetclinicApplication.class, args);
+		//here
 	}
 
 }
