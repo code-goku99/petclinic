@@ -1,9 +1,12 @@
 package com.petclinic.data.initializer;
 
+import java.util.Set;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.petclinic.model.Owner;
+import com.petclinic.model.Pet;
 import com.petclinic.model.PetType;
 import com.petclinic.model.Vet;
 import com.petclinic.service.OwnerService;
@@ -32,18 +35,43 @@ public class DataInitializer implements CommandLineRunner {
 
 		PetType tRex=new PetType();
 		tRex.setName("T-rex");
-		petTypeService.save(tRex);
+		PetType trexType = petTypeService.save(tRex);
 		
 		PetType whale=new PetType();
 		whale.setName("Whale");
-		petTypeService.save(whale);
+		PetType whaleType = petTypeService.save(whale);
 		
 		
 		Owner owner = new Owner();
 		owner.setFirstName("Jones");
 		owner.setLastName("Thompson");
+		owner.setAddress("Miami");
+		owner.setCity("Miami");
+		owner.setTelephone("0o0o0o0");
+		
+		Pet jonesPet = new Pet();
+		jonesPet.setOwner(owner);
+		jonesPet.setName("tranquil");
+		jonesPet.setPetType(trexType);
+		owner.getPets().add(jonesPet);
 		
 		ownerService.save(owner);
+		
+		Owner owner2 = new Owner();
+		owner2.setFirstName("Sos");
+		owner2.setLastName("Thompson");
+		owner2.setAddress("Miami");
+		owner2.setCity("Miami");
+		owner2.setTelephone("0o0o0o0");
+		
+		Pet thompsonPet = new Pet();
+		thompsonPet.setOwner(owner);
+		thompsonPet.setName("tranquil");
+		thompsonPet.setPetType(trexType);
+		owner2.getPets().add(thompsonPet);
+		
+		
+		ownerService.save(owner2);
 		
 		Vet vet = new Vet();
 		vet.setFirstName("Arnold");

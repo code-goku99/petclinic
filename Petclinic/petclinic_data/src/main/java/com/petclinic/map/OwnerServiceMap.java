@@ -6,9 +6,21 @@ import org.springframework.stereotype.Service;
 
 import com.petclinic.model.Owner;
 import com.petclinic.service.OwnerService;
+import com.petclinic.service.PetService;
+import com.petclinic.service.PetTypeService;
 
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+
+	private PetTypeService petTypeService;
+	
+	private PetService petService;
+
+
+	public OwnerServiceMap(PetTypeService petTypeService, PetService petService) {
+		this.petTypeService = petTypeService;
+		this.petService = petService;
+	}
 
 	@Override
 	public Owner findById(Long id) {
@@ -17,6 +29,24 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
 	@Override
 	public Owner save(Owner object) {
+		if(object !=null) {
+			if(object.getPets() != null) {
+				object.getPets().forEach(pet -> {
+				if(pet.getPetType() !=null) {
+					if(pet.getPetType().getId() == null) {
+						pet.setPetType(petTypeService.save(pet.getPetType()));
+					}
+				}else {
+					throw new RuntimeException("Pet Type cannot be null");
+				}
+				if(pet.getId() ==null) {
+					petService.save(pet);
+				}
+			});
+			}
+		}else {
+			throw new RuntimeException("Owner cannot be null");
+		}
 		return super.save(object);
 	}
 
