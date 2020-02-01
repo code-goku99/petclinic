@@ -8,11 +8,11 @@ import com.petclinic.model.Speciality;
 import com.petclinic.service.SpecialityService;
 
 @Service
-public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialityService{
+public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialityService {
 
 	@Override
 	public Speciality findById(Long id) {
-		 return super.findById(id);
+		return super.findById(id);
 	}
 
 	@Override
@@ -31,13 +31,10 @@ public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> i
 	}
 
 	@Override
-	public Set<Speciality> findAll(){
+	public Set<Speciality> findAll() {
 		return super.findAll();
 	}
 	
-
-
-
 
 	
 
