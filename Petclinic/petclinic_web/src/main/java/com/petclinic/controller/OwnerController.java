@@ -16,6 +16,10 @@ public class OwnerController {
 	@Autowired
 	private SupportServiceEgConfiuration supportService;
 	
+	/*
+	 * this bean SampleXmlConfHelper is used form xml file by using @Import
+	 * annotation at spring boot startup
+	 */
 	@Autowired
 	private SampleXmlConfHelper xmlConf;
 	
@@ -40,6 +44,11 @@ public class OwnerController {
 		System.out.println(xmlConf.xmlHelper());
 		map.addAttribute("listOfOwner", this.ownerService.findAll());
 		return "/owners/index";
+	}
+	
+	@RequestMapping({"/find" })
+	public String findOwner() {
+		return "notImplemented";
 	}
 	
 	
