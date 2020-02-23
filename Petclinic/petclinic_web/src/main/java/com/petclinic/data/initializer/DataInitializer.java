@@ -8,10 +8,12 @@ import com.petclinic.model.Pet;
 import com.petclinic.model.PetType;
 import com.petclinic.model.Speciality;
 import com.petclinic.model.Vet;
+import com.petclinic.model.Visit;
 import com.petclinic.service.OwnerService;
 import com.petclinic.service.PetTypeService;
 import com.petclinic.service.SpecialityService;
 import com.petclinic.service.VetService;
+import com.petclinic.service.VisitService;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -20,12 +22,13 @@ public class DataInitializer implements CommandLineRunner {
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
-	
+	private final VisitService visitService;
 
 
 	//@Autowired By default these get autowired
 	public DataInitializer(OwnerService ownerService, VetService vetService,
-			PetTypeService petTypeService,SpecialityService specialityService) {
+			PetTypeService petTypeService,SpecialityService specialityService,VisitService visitService) {
+		this.visitService = visitService;
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
@@ -111,6 +114,11 @@ public class DataInitializer implements CommandLineRunner {
 		vet2.setLastName("oos");
 		vet2.getSpeciality().add(surgery);
 		vetService.save(vet2);
+		
+		Visit visit = new Visit();
+		visit.setPet(thompsonPet);
+		visit.setDescription("Visist 1");
+		visitService.save(visit);
 		
 		System.out.println("Loaded Owners --vets ");
 	}
