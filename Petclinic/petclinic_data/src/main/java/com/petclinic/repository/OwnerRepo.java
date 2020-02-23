@@ -6,4 +6,5 @@ import com.petclinic.model.Owner;
 
 public interface OwnerRepo extends CrudRepository<Owner, Long> {
 
+	Owner findByFirstName(String name);
 }
