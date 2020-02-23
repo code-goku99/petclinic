@@ -3,6 +3,8 @@ package com.petclinic.jpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,7 @@ public class VisitJPAService implements VisitService {
 		return this.visitRepo.findById(id).orElse(null);
 	}
 
+	@Transactional
 	@Override
 	public Visit save(Visit object) {
 		return this.visitRepo.save(object);

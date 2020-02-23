@@ -10,6 +10,7 @@ import com.petclinic.model.Speciality;
 import com.petclinic.model.Vet;
 import com.petclinic.model.Visit;
 import com.petclinic.service.OwnerService;
+import com.petclinic.service.PetService;
 import com.petclinic.service.PetTypeService;
 import com.petclinic.service.SpecialityService;
 import com.petclinic.service.VetService;
@@ -23,16 +24,19 @@ public class DataInitializer implements CommandLineRunner {
 	private final PetTypeService petTypeService;
 	private final SpecialityService specialityService;
 	private final VisitService visitService;
+	private final PetService petService;
 
 
 	//@Autowired By default these get autowired
 	public DataInitializer(OwnerService ownerService, VetService vetService,
-			PetTypeService petTypeService,SpecialityService specialityService,VisitService visitService) {
+			PetTypeService petTypeService,SpecialityService specialityService,VisitService visitService,
+			PetService petService) {
 		this.visitService = visitService;
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialityService = specialityService;
+		this.petService = petService;
 	}
 
 
@@ -77,14 +81,7 @@ public class DataInitializer implements CommandLineRunner {
 		owner.setAddress("Miami");
 		owner.setCity("Miami");
 		owner.setTelephone("0o0o0o0");
-		
-		Pet jonesPet = new Pet();
-		jonesPet.setOwner(owner);
-		jonesPet.setName("tranquil");
-		jonesPet.setPetType(trexType);
-		owner.getPets().add(jonesPet);
-		
-		ownerService.save(owner);
+		 ownerService.save(owner);
 		
 		Owner owner2 = new Owner();
 		owner2.setFirstName("Sos");
@@ -92,6 +89,16 @@ public class DataInitializer implements CommandLineRunner {
 		owner2.setAddress("Miami");
 		owner2.setCity("Miami");
 		owner2.setTelephone("0o0o0o0");
+		ownerService.save(owner2);
+		
+		Pet jonesPet = new Pet();
+		jonesPet.setOwner(owner);
+		jonesPet.setName("tranquil");
+		jonesPet.setPetType(trexType);
+		owner.getPets().add(jonesPet);
+		this.petService.save(jonesPet);
+		
+		
 		
 		Pet thompsonPet = new Pet();
 		thompsonPet.setOwner(owner);
@@ -99,8 +106,7 @@ public class DataInitializer implements CommandLineRunner {
 		thompsonPet.setPetType(trexType);
 		owner2.getPets().add(thompsonPet);
 		
-		
-		ownerService.save(owner2);
+		this.petService.save(thompsonPet);
 		
 		Vet vet = new Vet();
 		vet.setFirstName("Arnold");

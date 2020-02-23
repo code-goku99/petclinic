@@ -43,21 +43,18 @@ public class OwnerJPAService implements OwnerService {
 	}
 
 	@Override
-	public Owner save(Owner object) {
-		// TODO Auto-generated method stub
-		return null;
+	public Owner save(Owner entity) {
+		return ownerRepo.save(entity);
 	}
 
 	@Override
 	public void delete(Owner object) {
-		// TODO Auto-generated method stub
-		
+		ownerRepo.delete(object);		
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		ownerRepo.deleteById(id);		
 	}
 
 	@Override
