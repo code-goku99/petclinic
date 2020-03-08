@@ -28,6 +28,10 @@ public class OwnerController {
 	OwnerController(OwnerService ownerService){
 		this.ownerService = ownerService;
 	}
+	OwnerController(OwnerService ownerService,SupportServiceEgConfiuration supportService){
+		this.supportService = supportService;
+		this.ownerService = ownerService;
+	}
 
 	@RequestMapping({"/:id"})
 	public String getOwnerById(Model map,String id) {
@@ -41,7 +45,7 @@ public class OwnerController {
 	@RequestMapping({ "","/", "/index", "/index.html" })
 	public String index(Model map) {
 		supportService.testCall();
-		System.out.println(xmlConf.xmlHelper());
+//		System.out.println(xmlConf.xmlHelper());
 		map.addAttribute("listOfOwner", this.ownerService.findAll());
 		return "/owners/index";
 	}
