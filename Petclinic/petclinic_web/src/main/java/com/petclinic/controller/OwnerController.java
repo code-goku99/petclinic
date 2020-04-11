@@ -3,10 +3,14 @@ package com.petclinic.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.petclinic.helper.SampleXmlConfHelper;
+import com.petclinic.model.Owner;
+import com.petclinic.model.Pet;
 import com.petclinic.service.OwnerService;
 import com.petclinic.service.SupportServiceEgConfiuration;
 
@@ -56,5 +60,11 @@ public class OwnerController {
 		return "redirect:/owners/index";
 	}
 	
-	
+	@GetMapping("/{ownerId}")
+	public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
+		ModelAndView mav = new ModelAndView("owners/ownerDetails");
+		Owner owner = this.ownerService.findById(Long.valueOf(ownerId));
+		mav.addObject(owner);
+		return mav;
+	}
 }
