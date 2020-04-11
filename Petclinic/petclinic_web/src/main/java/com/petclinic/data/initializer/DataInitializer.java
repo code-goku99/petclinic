@@ -1,5 +1,7 @@
 package com.petclinic.data.initializer;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -104,6 +106,7 @@ public class DataInitializer implements CommandLineRunner {
 		thompsonPet.setOwner(owner);
 		thompsonPet.setName("tranquil");
 		thompsonPet.setPetType(trexType);
+		thompsonPet.setBirthday(LocalDate.of(2016, 9, 23));
 		owner2.getPets().add(thompsonPet);
 		
 		this.petService.save(thompsonPet);
