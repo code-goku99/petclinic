@@ -1,6 +1,7 @@
 package com.petclinic.jpa;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -59,8 +60,13 @@ public class OwnerJPAService implements OwnerService {
 
 	@Override
 	public Owner findByFirstname(String firstname) {
-		// TODO Auto-generated method stub
 		return ownerRepo.findByFirstName(firstname);
+	}
+
+	@Override
+	public List<Owner> findAllByFirstnameLike(String firstname) {
+		// TODO Auto-generated method stub
+		return ownerRepo.findAllByFirstNameContains(firstname);
 	}
 
 }

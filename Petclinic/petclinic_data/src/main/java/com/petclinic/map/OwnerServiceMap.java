@@ -1,5 +1,6 @@
 package com.petclinic.map;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.context.annotation.Profile;
@@ -69,6 +70,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
 	@Override
 	public Owner findByFirstname(String firstname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Owner> findAllByFirstnameLike(String firstname) {
 		// TODO Auto-generated method stub
 		return null;
 	}
