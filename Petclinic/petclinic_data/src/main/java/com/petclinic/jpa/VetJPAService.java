@@ -11,7 +11,7 @@ import com.petclinic.repository.VetRepo;
 import com.petclinic.service.VetService;
 
 @Service
-@Profile("springdatajpa")
+@Profile({"dev","prd"})
 public class VetJPAService implements VetService {
 
 	public final VetRepo vetrepo;
