@@ -14,7 +14,7 @@ import com.petclinic.repository.PetRepo;
 import com.petclinic.service.OwnerService;
 
 @Service
-@Profile("springdatajpa")
+@Profile({"dev","prd"})
 public class OwnerJPAService implements OwnerService {
 
 	private final OwnerRepo ownerRepo;

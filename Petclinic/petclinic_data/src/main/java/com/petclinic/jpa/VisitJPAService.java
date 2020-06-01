@@ -13,7 +13,7 @@ import com.petclinic.repository.VisitRepo;
 import com.petclinic.service.VisitService;
 
 @Service
-@Profile("springdatajpa")
+@Profile({"dev","prd"})
 public class VisitJPAService implements VisitService {
 
 	private final VisitRepo visitRepo;

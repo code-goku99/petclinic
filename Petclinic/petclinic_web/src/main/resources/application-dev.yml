@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/sfg_dev
+    username: sfg_dev_user
+    password: sandeep
+  jpa:
+    hibernate:
+      ddl-auto:  validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true  
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: sandeep_database_create.sql
+      
+# Here  'properties.javax.persistance.schema-generation' in yml file is used to genereate the table structure for the first time as the appl is load with table structure at the given 
+#location  ' create-target: sandeep_database_create.sql' 
+    

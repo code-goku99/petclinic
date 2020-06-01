@@ -11,7 +11,7 @@ import com.petclinic.repository.SpecialityRepo;
 import com.petclinic.service.SpecialityService;
 
 @Service
-@Profile("springdatajpa")
+@Profile({"dev","prd"})
 public class SpecialityJPAService implements SpecialityService {
 
 	public final SpecialityRepo srepo;
