@@ -36,7 +36,9 @@
 
 	<packaging>pom</packaging>
 	<modules>
+		
 		<module>petclinic_data</module>
 		<module>petclinic_web</module>
+		<!--<module>../../Deepu-petclinic/petclinic_mongo</module>-->
 	</modules>
 </project>
